@@ -1,0 +1,19 @@
+<div class="centered-container">
+  <br>
+  <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Ingrese el nombre de un Pokemon</mat-label>
+      <input matInput #pokemonName (input)="updateName(pokemonName.value)">
+      <button mat-icon-button matSuffix (click)="loadPokemon()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+    @if(loading()){
+      <div class="loader-container">
+        <span class="loader"></span>
+      </div>
+    }
+    @if(this.animationArray().length === 2 && this.imagenActual()) {
+      <h1>{{pokemonData().species.name}}</h1>
+      <img [src]="imagenActual()" alt="Imagen de animación" height="150" width="150">
+    }
+</div>
