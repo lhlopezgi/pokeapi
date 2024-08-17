@@ -5,7 +5,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 
@@ -34,7 +33,7 @@ export default class AnimationComponent implements OnDestroy{
 
   imagenActual = computed(() => {
     const array = this.animationArray();
-    return array.length > 0 ? array[this.indiceActual() % array.length] : '';
+    return array.length > 0 ? array[this.indiceActual()] : '';
   });
   
   constructor( 
@@ -61,7 +60,7 @@ export default class AnimationComponent implements OnDestroy{
   loadPokemon(){
     if(this.pokemonNameOrId().length > 0){
       this.detenerAnimacion();
-      this.loading.set(true)
+      this.loading.set(true);
       this.pokemonService.getPokemon(this.pokemonNameOrId()).subscribe({
         next: (pokemon: any) =>{  
           this.pokemonData.set(pokemon);
